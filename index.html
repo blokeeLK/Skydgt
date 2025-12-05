@@ -6404,8 +6404,8 @@ body{
     box-sizing:border-box;
   }
 }
-/* ===== CORREÇÕES DEFINITIVAS MOBILE - CARROSSEL E CASE ===== */
-@media (max-width: 768px) {
+/* ===== CORREÇÕES DEFINITIVAS MOBILE - CARROSSEL E CASE - SOBRESCREVE TUDO ===== */
+@media screen and (max-width: 768px) {
   /* FORÇAR CARROSSEL A CABER - MESMO TAMANHO DO CICLO */
   .assessoria-section {
     padding: 60px 20px !important;
@@ -7185,6 +7185,143 @@ body{
     width: 28px !important;
     height: 28px !important;
     font-size: 10px !important;
+  }
+}
+
+/* ===== REGRAS FINAIS ULTRA ESPECÍFICAS PARA TODOS OS CELULARES ===== */
+@media screen and (max-width: 768px) {
+  /* FORÇAR TODOS OS ELEMENTOS DO CARROSSEL */
+  .assessoria-section,
+  .assessoria-section * {
+    box-sizing: border-box !important;
+  }
+  
+  .services-carousel-wrapper,
+  .services-carousel-container,
+  .services-carousel-track,
+  .carousel-slide {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+  
+  .carousel-slide {
+    padding: 10px 8px !important;
+    gap: 6px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+  
+  .slide-content,
+  .slide-media,
+  .slide-list {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+  
+  .slide-media {
+    max-height: 140px !important;
+    min-height: auto !important;
+  }
+  
+  /* FORÇAR TODOS OS ELEMENTOS DO CASE */
+  .cases-section,
+  .cases-section * {
+    box-sizing: border-box !important;
+  }
+  
+  .case-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px 10px !important;
+    gap: 10px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+  
+  .case-content,
+  .before-after-chart,
+  .chart-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+  
+  .before-after-chart {
+    padding: 10px 8px !important;
+    gap: 8px !important;
+    flex-direction: column !important;
+  }
+  
+  .chart-bars-mini {
+    height: 35px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* FORÇAR EM CELULARES PEQUENOS */
+  .assessoria-section {
+    padding: 50px 15px !important;
+  }
+  
+  .carousel-slide {
+    padding: 10px 8px !important;
+    gap: 6px !important;
+  }
+  
+  .slide-media {
+    max-height: 120px !important;
+  }
+  
+  .cases-section {
+    padding: 50px 15px !important;
+  }
+  
+  .case-card {
+    padding: 12px 10px !important;
+    gap: 8px !important;
+  }
+  
+  .before-after-chart {
+    padding: 8px 6px !important;
+    gap: 6px !important;
+  }
+  
+  .chart-bars-mini {
+    height: 30px !important;
+  }
+}
+
+/* FORÇAR VIEWPORT CORRETO */
+@media screen and (max-width: 768px) {
+  html {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative !important;
+  }
+  
+  .assessoria-section,
+  .cases-section {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    position: relative !important;
   }
 }
 
