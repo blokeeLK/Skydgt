@@ -1517,6 +1517,8 @@ body{
   display:flex;
   align-items:center;
   gap:20px;
+  width:100%;
+  max-width:100%;
 }
 
 .services-carousel-container{
@@ -1525,11 +1527,18 @@ body{
   border-radius:24px;
   background:#fff;
   box-shadow:0 20px 60px rgba(0,0,0,0.08);
+  position:relative;
+  height:auto;
+  max-height:none;
+  display:flex;
+  flex-direction:column;
 }
 
 .services-carousel-track{
   display:flex;
   transition:transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  align-items:stretch;
+  height:100%;
 }
 
 /* ARROWS */
@@ -1618,11 +1627,19 @@ body{
   grid-template-columns:1fr 1.2fr;
   gap:40px;
   padding:50px;
-  align-items:center;
+  align-items:start;
+  height:auto;
+  min-height:auto;
+  max-height:none;
 }
 
 .slide-content{
   padding-right:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  height:auto;
+  min-height:auto;
 }
 
 /* Staggered entrance animations for slide content - Auto loop */
@@ -1876,8 +1893,18 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  min-height:350px;
+  min-height:300px;
+  max-height:400px;
+  height:auto;
   position:relative;
+  overflow:hidden;
+  width:100%;
+}
+
+.slide-media > *{
+  max-height:100%;
+  width:auto;
+  height:auto;
 }
 
 /* Background glow effect for slide media */
@@ -1935,6 +1962,7 @@ body{
 .media-team img{
   width:150px;
   height:210px;
+  max-height:210px;
   object-fit:cover;
   border-radius:20px;
   box-shadow:
@@ -1954,6 +1982,7 @@ body{
 
 .media-team img:nth-child(2){
   height:260px;
+  max-height:260px;
   --delay:2s;
   animation-name:teamFloat2;
   z-index:3;
@@ -3593,10 +3622,13 @@ body{
     padding:30px 20px;
     text-align:center;
     gap:25px;
+    height:auto;
+    min-height:auto;
   }
   
   .slide-content{
     padding-right:0;
+    height:auto;
   }
   
   .slide-content h3{
@@ -3613,7 +3645,15 @@ body{
   }
   
   .slide-media{
-    min-height:280px;
+    min-height:250px;
+    max-height:350px;
+    height:auto;
+    width:100%;
+  }
+
+  .slide-media > *{
+    max-width:100%;
+    max-height:100%;
   }
   
   .carousel-arrow{
@@ -3781,6 +3821,20 @@ body{
 
   .slide-media{
     min-height:200px;
+    max-height:280px;
+    height:auto;
+    width:100%;
+  }
+
+  .slide-media > *{
+    max-width:100%;
+    max-height:100%;
+  }
+
+  .carousel-slide{
+    height:auto;
+    min-height:auto;
+    padding:20px 15px;
   }
 
   .carousel-arrow{
