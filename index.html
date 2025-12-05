@@ -4923,10 +4923,10 @@ body{
           </select>
         </div>
         
-        <a href="https://wa.me/5537991169527?text=*NOVO%20CONTATO%20-%20SKY%20DGT*%0A%0A👤%20*Nome:*%20%0A📧%20*E-mail:*%20%0A🏢%20*Empresa:*%20%0A📱%20*Telefone:*%20%0A💰%20*Faturamento:*%20%0A📊%20*Segmento:*" target="_blank" class="form-submit" style="text-decoration: none; display: block; text-align: center;">
+        <button type="submit" class="form-submit" id="submitFormBtn">
           <span>Receber mais informações</span>
           <i class="fas fa-arrow-right"></i>
-        </a>
+        </button>
         
         <p class="form-disclaimer">
           <i class="fas fa-lock"></i>
@@ -5873,8 +5873,109 @@ document.querySelector('.footer-right a').addEventListener('click', (e) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Contact Form - Removido para permitir envio direto via HTML
-// O formulário agora envia diretamente para whatsapp-redirect.html
+// CONTACT FORM - ENVIO DIRETO PARA WHATSAPP
+(function(){
+  const contactForm = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitFormBtn');
+  
+  if(!contactForm || !submitBtn) return;
+  
+  // Função para enviar ao WhatsApp
+  function enviarParaWhatsApp(e){
+    e.preventDefault();
+    
+    // Coletar todos os dados do formulário
+    const nome = contactForm.querySelector('[name="nome"]').value.trim();
+    const email = contactForm.querySelector('[name="email"]').value.trim();
+    const empresa = contactForm.querySelector('[name="empresa"]').value.trim();
+    const telefone = contactForm.querySelector('[name="telefone"]').value.trim();
+    const faturamentoSelect = contactForm.querySelector('[name="faturamento"]');
+    const segmentoSelect = contactForm.querySelector('[name="segmento"]');
+    
+    // Validar todos os campos
+    if(!nome || !email || !empresa || !telefone){
+      alert('⚠️ Por favor, preencha todos os campos obrigatórios.');
+      return false;
+    }
+    
+    // Validar selects
+    if(!faturamentoSelect.value || faturamentoSelect.value === ''){
+      alert('⚠️ Por favor, selecione o faturamento mensal da sua empresa.');
+      faturamentoSelect.focus();
+      return false;
+    }
+    
+    if(!segmentoSelect.value || segmentoSelect.value === ''){
+      alert('⚠️ Por favor, selecione o segmento da sua empresa.');
+      segmentoSelect.focus();
+      return false;
+    }
+    
+    // Validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailRegex.test(email)){
+      alert('⚠️ Por favor, insira um e-mail válido.');
+      contactForm.querySelector('[name="email"]').focus();
+      return false;
+    }
+    
+    // Validar telefone (mínimo 10 dígitos)
+    const telefoneLimpo = telefone.replace(/\D/g, '');
+    if(telefoneLimpo.length < 10){
+      alert('⚠️ Por favor, insira um telefone válido com DDD.');
+      contactForm.querySelector('[name="telefone"]').focus();
+      return false;
+    }
+    
+    // Obter textos dos selects
+    const faturamentoTexto = faturamentoSelect.options[faturamentoSelect.selectedIndex].text;
+    const segmentoTexto = segmentoSelect.options[segmentoSelect.selectedIndex].text;
+    
+    // Formatar telefone para exibição
+    const telefoneFormatado = telefoneLimpo.length === 11 
+      ? telefoneLimpo.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3')
+      : telefoneLimpo.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+    
+    // Montar mensagem formatada para WhatsApp
+    const mensagem = `*NOVO CONTATO - SKY DGT*
+
+👤 *Nome:* ${nome}
+📧 *E-mail:* ${email}
+🏢 *Empresa:* ${empresa}
+📱 *Telefone:* +55 ${telefoneFormatado}
+💰 *Faturamento Mensal:* ${faturamentoTexto}
+📊 *Segmento:* ${segmentoTexto}
+
+_Formulário preenchido através do site_`;
+    
+    // Codificar mensagem para URL
+    const mensagemEncoded = encodeURIComponent(mensagem);
+    
+    // Número do WhatsApp (sem caracteres especiais)
+    const whatsappNumber = '5537991169527';
+    
+    // Criar URL do WhatsApp
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${mensagemEncoded}`;
+    
+    // Abrir WhatsApp em nova aba
+    window.open(whatsappURL, '_blank');
+    
+    // Feedback visual (opcional)
+    submitBtn.innerHTML = '<span>✓ Enviado!</span><i class="fas fa-check"></i>';
+    submitBtn.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
+    
+    // Resetar botão após 3 segundos
+    setTimeout(() => {
+      submitBtn.innerHTML = '<span>Receber mais informações</span><i class="fas fa-arrow-right"></i>';
+      submitBtn.style.background = '';
+    }, 3000);
+    
+    return false;
+  }
+  
+  // Adicionar evento de submit
+  contactForm.addEventListener('submit', enviarParaWhatsApp);
+  submitBtn.addEventListener('click', enviarParaWhatsApp);
   
   // Input animations
   const inputs = contactForm.querySelectorAll('input, select');
@@ -5889,7 +5990,23 @@ document.querySelector('.footer-right a').addEventListener('click', (e) => {
       }
     });
   });
-}
+  
+  // Máscara de telefone
+  const telefoneInput = contactForm.querySelector('[name="telefone"]');
+  if(telefoneInput){
+    telefoneInput.addEventListener('input', function(e){
+      let value = e.target.value.replace(/\D/g, '');
+      if(value.length <= 11){
+        if(value.length <= 10){
+          value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+        } else {
+          value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+        }
+        e.target.value = value;
+      }
+    });
+  }
+})();
 
 // SERVICES CAROUSEL
 (function(){
