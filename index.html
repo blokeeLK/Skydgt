@@ -3612,132 +3612,86 @@ body{
     gap:8px !important;
     padding:10px 8px !important;
   }
-  /* CAIXA DE CIMA – TEXTO (FUNDO BRANCO) */
+  /* CAIXA DO TEXTO BEM MENOR */
   .assessoria-section .slide-content{
-    width:100% !important;
-    max-width:100% !important;
-    padding:10px 10px !important;
-    border-radius:12px !important;
-    background:#ffffff !important;
-    border:1px solid rgba(148,163,184,0.3) !important;
-    box-shadow:0 6px 16px rgba(15,23,42,0.18) !important;
-    color:#020617 !important;
-  }
-  .assessoria-section .slide-tag{
-    background:rgba(15,23,42,0.05) !important;
-    border-color:rgba(148,163,184,0.4) !important;
-    color:#020617 !important;
-  }
-  .assessoria-section .slide-tag i{
-    color:#38BDF8 !important;
-  }
-  .assessoria-section .slide-content h3{
-    font-size:14px !important;
-    line-height:1.25 !important;
-    margin-bottom:4px !important;
-    color:#020617 !important;
-  }
-  .assessoria-section .slide-content p{
-    font-size:11px !important;
-    margin-bottom:4px !important;
-    color:#111827 !important;
-  }
-  .assessoria-section .slide-list li{
-    font-size:11px !important;
-    color:#111827 !important;
-  }
-  .assessoria-section .slide-highlight{
-    font-size:11px !important;
-    color:#111827 !important;
-  }
-  /* CAIXA DE BAIXO – ANIMAÇÕES / VISUAL (PEQUENA, SEM FUNDO PRETO) */
-  .assessoria-section .slide-media{
-    width:100% !important;
-    max-width:220px !important;
-    margin:0 auto !important;
-    border-radius:12px !important;
-    padding:8px 8px !important;
-    background:transparent !important;        /* REMOVE O FUNDO PRETO */
-    border:none !important;
-    box-shadow:none !important;
-  }
-  .assessoria-section .slide-media-header{
-    margin-bottom:4px !important;
-    font-size:10px !important;
-  }
-  /* GRID DAS ANIMAÇÕES – PEQUENO E SEM SOBREPOR */
-  .assessoria-section .media-grid{
-    display:flex !important;
-    flex-wrap:wrap !important;
-    gap:4px !important;
-  }
-  .assessoria-section .media-block{
-    flex:1 1 calc(50% - 4px) !important;  /* 2 por linha */
-    min-width:0 !important;
-    padding:6px !important;
+    padding:8px 10px !important;
     border-radius:10px !important;
-    font-size:9px !important;
-    background:rgba(15,23,42,0.85) !important;
-    border:1px solid rgba(148,163,184,0.45) !important;
-  }
-  .assessoria-section .media-block-title{
-    font-size:9px !important;
-  }
-  .assessoria-section .media-block-tag{
-    font-size:8px !important;
-    padding:3px 4px !important;
-  }
-  /* GARANTE QUE NADA FIQUE EM CIMA DO OUTRO */
-  .assessoria-section .media-team,
-  .assessoria-section .media-phones,
-  .assessoria-section .media-dashboard,
-  .assessoria-section .media-support-team{
-    transform:none !important;
-  }
-  /* SETAS E PONTOS – SÓ NO CARROSSEL DA ASSESSORIA */
-  .assessoria-section .carousel-arrow{
-    width:26px !important;
-    height:26px !important;
-  }
-  .assessoria-section .carousel-dots{
-    margin-top:8px !important;
-  }
-  .assessoria-section .carousel-dot{
-    width:7px;
-    height:7px;
-  }
-}
-
-@media (max-width: 480px){
-  .assessoria-section{
-    padding:22px 8px !important;
-  }
-  .assessoria-section .carousel-slide{
-    padding:8px 6px !important;
-    gap:6px !important;
-  }
-  .assessoria-section .slide-content{
-    padding:8px 8px !important;
   }
   .assessoria-section .slide-content h3{
     font-size:13px !important;
   }
   .assessoria-section .slide-content p,
-  .assessoria-section .slide-list li,
-  .assessoria-section .slide-highlight{
-    font-size:10px !important;
+  .assessoria-section .slide-list li{
+    font-size:11px !important;
   }
+  /* CAIXA DA ANIMAÇÃO — QUADRADA E BEM PEQUENA */
   .assessoria-section .slide-media{
-    max-width:190px !important;
-    padding:6px 6px !important;
+    width:100% !important;
+    max-width:180px !important;     /* << MENOR AINDA */
+    height:180px !important;        /* << CAIXA QUADRADA */
+    margin:0 auto !important;
+    padding:6px !important;
+    border-radius:12px !important;
+    background:#ffffff !important;  
+    border:1px solid rgba(0,0,0,0.08) !important;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08) !important;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden !important;   /* GARANTE QUE NADA PASSE PARA FORA */
+  }
+  /* TODAS AS ANIMAÇÕES 60% MENORES */
+  .assessoria-section .slide-media img,
+  .assessoria-section .media-team,
+  .assessoria-section .media-phones,
+  .assessoria-section .media-dashboard,
+  .assessoria-section .media-support-team{
+    width:60% !important;
+    height:auto !important;
+    object-fit:contain !important;
+    transform:none !important;
+  }
+  /* GRID DE BLOCOS — 100% SEM SOBREPOSIÇÃO */
+  .assessoria-section .media-grid{
+    display:flex !important;
+    flex-wrap:wrap !important;
+    gap:4px !important;
+    justify-content:center !important;
+    align-items:center !important;
+    width:100% !important;
+    height:100% !important;
   }
   .assessoria-section .media-block{
-    padding:5px !important;
-    font-size:8.5px !important;
+    flex:1 1 45% !important;         /* dois por linha sem sobrepor */
+    max-width:45% !important;
+    padding:4px !important;
+    border-radius:8px !important;
+    font-size:8px !important;
   }
-  .assessoria-section .carousel-dot{
-    width:6px !important;
-    height:6px !important;
+  .assessoria-section .media-block-title{
+    font-size:8px !important;
+  }
+  .assessoria-section .media-block-tag{
+    font-size:7px !important;
+    padding:2px 3px !important;
+  }
+  /* CAIXAS DO CARROSSEL MUITO MAIS BAIXAS */
+  .assessoria-section .carousel-slide{
+    padding:8px !important;
+    gap:6px !important;
+  }
+}
+
+@media (max-width: 480px){
+  .assessoria-section .slide-media{
+    max-width:160px !important;
+    height:160px !important;     /* animação menor ainda */
+  }
+  .assessoria-section .media-grid{
+    gap:3px !important;
+  }
+  .assessoria-section .media-block{
+    padding:3px !important;
   }
 }
 
