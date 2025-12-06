@@ -3577,114 +3577,89 @@ body{
   50%{ transform:scale(1.5); opacity:0; }
 }
 
-/* ==== FIX CARROSSEL ASSESSORIA NO MOBILE ==== */
-@media (max-width:900px){
+/* ==== FIX CARROSSEL ASSESSORIA NO MOBILE (VERSÃO COMPACTA) ==== */
+@media (max-width: 900px){
   .assessoria-section{
-    padding:60px 20px !important;
-  }
-
-  .assessoria-container{
-    max-width:100% !important;
-    width:100% !important;
-    padding:0 !important;
-    overflow:hidden !important;
-  }
-
-  .services-carousel-wrapper{
-    position:relative;
-    width:100% !important;
-    max-width:100% !important;
-    padding:0 !important;
-    margin:0 auto !important;
-    overflow:hidden !important;
+    padding:40px 16px !important;
   }
 
   .services-carousel-container{
-    width:100% !important;
-    max-width:100% !important;
-    border-radius:12px;
-    overflow:hidden !important;
-    position:relative;
-  }
-
-  .services-carousel-track{
-    display:flex !important;
-    width:100% !important;
-    max-width:100% !important;
-    box-sizing:border-box;
+    border-radius:10px;
   }
 
   .carousel-slide{
-    min-width:100% !important;
-    max-width:100% !important;
-    width:100% !important;
-    box-sizing:border-box;
-    display:grid;
-    grid-template-columns:1fr !important;
-    gap:18px !important;
-    padding:20px 14px !important;
-    text-align:center;
-    overflow:hidden !important;
+    min-height:auto !important;
+    padding:14px 10px !important;   /* MENOR PADDING */
+    gap:12px !important;            /* MENOS ESPAÇAMENTO */
   }
 
   .slide-content{
-    padding-right:0 !important;
+    padding:0 !important;
   }
 
+  .slide-content h3{
+    font-size:16px !important;
+    line-height:1.2 !important;
+  }
+
+  .slide-content p{
+    font-size:12px !important;
+  }
+
+  /* IMAGENS MENORES */
   .slide-media{
+    max-width:220px !important;   /* ANTES ~300px */
     margin:0 auto;
-    max-width:320px;
   }
 
   .media-team,
   .media-phones,
   .media-dashboard,
   .media-support-team{
-    transform:scale(0.9);
+    transform:scale(0.78) !important;   /* REDUÇÃO ADICIONAL */
     transform-origin:center top;
   }
 
+  /* SETAS */
   .carousel-arrow{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    background:#fff;
-    box-shadow:0 2px 8px rgba(0,0,0,0.25);
-    z-index:10;
+    width:28px !important;
+    height:28px !important;
   }
 
-  .carousel-prev{
-    left:6px;
-  }
+  .carousel-prev{ left:6px; }
+  .carousel-next{ right:6px; }
 
-  .carousel-next{
-    right:6px;
-  }
-
+  /* DOTS MAIS PRÓXIMOS DO CONTEÚDO */
   .carousel-dots{
-    margin-top:20px;
+    margin-top:12px !important;
   }
 }
 
-@media (max-width:480px){
-  .assessoria-header h2{
-    font-size:18px !important;
-    line-height:1.2;
-  }
-
-  .assessoria-header p{
-    font-size:12px !important;
+@media (max-width: 480px){
+  .assessoria-section{
+    padding:30px 12px !important;
   }
 
   .carousel-slide{
-    padding:18px 10px !important;
+    padding:12px 8px !important;
+    gap:10px !important;
   }
 
   .slide-media{
-    max-width:260px;
+    max-width:190px !important;     /* AINDA MENOR PARA CELULARES MUITO PEQUENOS */
+  }
+
+  .slide-content h3{
+    font-size:14px !important;
+  }
+
+  .slide-content p{
+    font-size:11px !important;
+  }
+
+  .carousel-dots button{
+    width:6px !important;
+    height:6px !important;
   }
 }
 
