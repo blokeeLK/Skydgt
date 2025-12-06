@@ -3582,19 +3582,19 @@ body{
   .assessoria-section{
     padding:24px 10px !important;
   }
-  .services-carousel-wrapper{
+  .assessoria-section .services-carousel-wrapper{
     width:100% !important;
     max-width:100% !important;
     margin:0 auto !important;
     overflow:hidden !important;
   }
-  .services-carousel-container{
+  .assessoria-section .services-carousel-container{
     width:100% !important;
     max-width:100% !important;
     border-radius:14px;
     overflow:hidden !important;
   }
-  .services-carousel-track{
+  .assessoria-section .services-carousel-track{
     display:flex !important;
     width:100% !important;
     max-width:100% !important;
@@ -3602,7 +3602,7 @@ body{
     align-items:stretch !important;
   }
   /* SLIDE = DUAS CAIXAS EMPILHADAS (TEXTO + ANIMAÇÃO) */
-  .carousel-slide{
+  .assessoria-section .carousel-slide{
     min-width:100% !important;
     max-width:100% !important;
     width:100% !important;
@@ -3613,7 +3613,7 @@ body{
     padding:10px 8px !important;
   }
   /* CAIXA DE CIMA – TEXTO (FUNDO BRANCO) */
-  .slide-content{
+  .assessoria-section .slide-content{
     width:100% !important;
     max-width:100% !important;
     padding:10px 10px !important;
@@ -3623,82 +3623,88 @@ body{
     box-shadow:0 6px 16px rgba(15,23,42,0.18) !important;
     color:#020617 !important;
   }
-  .slide-tag{
+  .assessoria-section .slide-tag{
     background:rgba(15,23,42,0.05) !important;
     border-color:rgba(148,163,184,0.4) !important;
     color:#020617 !important;
   }
-  .slide-tag i{
+  .assessoria-section .slide-tag i{
     color:#38BDF8 !important;
   }
-  .slide-content h3{
+  .assessoria-section .slide-content h3{
     font-size:14px !important;
     line-height:1.25 !important;
     margin-bottom:4px !important;
     color:#020617 !important;
   }
-  .slide-content p{
+  .assessoria-section .slide-content p{
     font-size:11px !important;
     margin-bottom:4px !important;
     color:#111827 !important;
   }
-  .slide-list li{
+  .assessoria-section .slide-list li{
     font-size:11px !important;
     color:#111827 !important;
   }
-  .slide-highlight{
+  .assessoria-section .slide-highlight{
     font-size:11px !important;
     color:#111827 !important;
   }
-  /* CAIXA DE BAIXO – ANIMAÇÕES / VISUAL (BEM PEQUENO) */
-  .slide-media{
+  /* CAIXA DE BAIXO – ANIMAÇÕES / VISUAL (PEQUENA, SEM FUNDO PRETO) */
+  .assessoria-section .slide-media{
     width:100% !important;
-    max-width:220px !important;   /* bem menor */
+    max-width:220px !important;
     margin:0 auto !important;
     border-radius:12px !important;
     padding:8px 8px !important;
-    background:rgba(15,23,42,0.96) !important;
-    border:1px solid rgba(148,163,184,0.55) !important;
-    box-shadow:0 6px 18px rgba(15,23,42,0.8) !important;
+    background:transparent !important;        /* REMOVE O FUNDO PRETO */
+    border:none !important;
+    box-shadow:none !important;
   }
-  .slide-media-header{
+  .assessoria-section .slide-media-header{
     margin-bottom:4px !important;
     font-size:10px !important;
   }
-  /* GRID DAS ANIMAÇÕES PEQUENO E SEM SOBREPOR */
-  .media-grid{
+  /* GRID DAS ANIMAÇÕES – PEQUENO E SEM SOBREPOR */
+  .assessoria-section .media-grid{
     display:flex !important;
     flex-wrap:wrap !important;
     gap:4px !important;
   }
-  .media-block{
-    flex:1 1 calc(50% - 4px) !important;  /* 2 por linha, pequenas */
+  .assessoria-section .media-block{
+    flex:1 1 calc(50% - 4px) !important;  /* 2 por linha */
     min-width:0 !important;
     padding:6px !important;
     border-radius:10px !important;
     font-size:9px !important;
+    background:rgba(15,23,42,0.85) !important;
+    border:1px solid rgba(148,163,184,0.45) !important;
   }
-  .media-block-title{
+  .assessoria-section .media-block-title{
     font-size:9px !important;
   }
-  .media-block-tag{
+  .assessoria-section .media-block-tag{
     font-size:8px !important;
     padding:3px 4px !important;
   }
   /* GARANTE QUE NADA FIQUE EM CIMA DO OUTRO */
-  .media-team,
-  .media-phones,
-  .media-dashboard,
-  .media-support-team{
+  .assessoria-section .media-team,
+  .assessoria-section .media-phones,
+  .assessoria-section .media-dashboard,
+  .assessoria-section .media-support-team{
     transform:none !important;
   }
-  /* SETAS E PONTOS AJUSTADOS */
-  .carousel-arrow{
+  /* SETAS E PONTOS – SÓ NO CARROSSEL DA ASSESSORIA */
+  .assessoria-section .carousel-arrow{
     width:26px !important;
     height:26px !important;
   }
-  .carousel-dots{
+  .assessoria-section .carousel-dots{
     margin-top:8px !important;
+  }
+  .assessoria-section .carousel-dot{
+    width:7px;
+    height:7px;
   }
 }
 
@@ -3706,30 +3712,30 @@ body{
   .assessoria-section{
     padding:22px 8px !important;
   }
-  .carousel-slide{
+  .assessoria-section .carousel-slide{
     padding:8px 6px !important;
     gap:6px !important;
   }
-  .slide-content{
+  .assessoria-section .slide-content{
     padding:8px 8px !important;
   }
-  .slide-content h3{
+  .assessoria-section .slide-content h3{
     font-size:13px !important;
   }
-  .slide-content p,
-  .slide-list li,
-  .slide-highlight{
+  .assessoria-section .slide-content p,
+  .assessoria-section .slide-list li,
+  .assessoria-section .slide-highlight{
     font-size:10px !important;
   }
-  .slide-media{
-    max-width:190px !important;   /* ainda menor em tela bem pequena */
+  .assessoria-section .slide-media{
+    max-width:190px !important;
     padding:6px 6px !important;
   }
-  .media-block{
+  .assessoria-section .media-block{
     padding:5px !important;
     font-size:8.5px !important;
   }
-  .carousel-dot{
+  .assessoria-section .carousel-dot{
     width:6px !important;
     height:6px !important;
   }
