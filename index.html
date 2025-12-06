@@ -3577,89 +3577,110 @@ body{
   50%{ transform:scale(1.5); opacity:0; }
 }
 
-/* ==== FIX CARROSSEL ASSESSORIA NO MOBILE (VERSÃO COMPACTA) ==== */
+/* ==== CARROSSEL ASSESSORIA – 2 CAIXAS NO MOBILE (TEXTO EM CIMA / ANIMAÇÃO EM BAIXO) ==== */
 @media (max-width: 900px){
   .assessoria-section{
-    padding:40px 16px !important;
+    padding:32px 14px !important;
   }
-
+  .services-carousel-wrapper{
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 auto !important;
+    overflow:hidden !important;
+  }
   .services-carousel-container{
-    border-radius:10px;
+    width:100% !important;
+    max-width:100% !important;
+    border-radius:16px;
+    overflow:hidden !important;
   }
-
+  .services-carousel-track{
+    display:flex !important;
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box;
+  }
+  /* slide vira coluna: CAIXA DE CIMA (texto) + CAIXA DE BAIXO (animação) */
   .carousel-slide{
-    min-height:auto !important;
-    padding:14px 10px !important;   /* MENOR PADDING */
-    gap:12px !important;            /* MENOS ESPAÇAMENTO */
+    min-width:100% !important;
+    max-width:100% !important;
+    width:100% !important;
+    box-sizing:border-box;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:10px !important;
+    padding:14px 10px !important;
   }
-
+  /* CAIXA DE CIMA – TEXTO */
   .slide-content{
-    padding:0 !important;
+    width:100% !important;
+    max-width:100% !important;
+    padding:12px 10px;
+    border-radius:14px;
+    background:rgba(15,23,42,0.96);
+    border:1px solid rgba(148,163,184,0.55);
+    box-shadow:0 10px 26px rgba(15,23,42,0.9);
   }
-
   .slide-content h3{
-    font-size:16px !important;
-    line-height:1.2 !important;
+    font-size:15px !important;
+    line-height:1.25 !important;
+    margin-bottom:4px;
   }
-
   .slide-content p{
     font-size:12px !important;
   }
-
-  /* IMAGENS MENORES */
+  .slide-list li{
+    font-size:11px !important;
+  }
+  .slide-highlight{
+    font-size:11px !important;
+  }
+  /* CAIXA DE BAIXO – ANIMAÇÃO / VISUAL */
   .slide-media{
-    max-width:220px !important;   /* ANTES ~300px */
+    width:100% !important;
+    max-width:100% !important;
     margin:0 auto;
+    border-radius:14px;
+    padding:10px 8px;
+    background:rgba(15,23,42,0.96);
+    border:1px solid rgba(148,163,184,0.55);
+    box-shadow:0 10px 26px rgba(15,23,42,0.9);
   }
-
-  .media-team,
-  .media-phones,
-  .media-dashboard,
-  .media-support-team{
-    transform:scale(0.78) !important;   /* REDUÇÃO ADICIONAL */
-    transform-origin:center top;
+  .media-grid{
+    gap:6px !important;
   }
-
-  /* SETAS */
+  /* Deixa mais compacto verticalmente */
+  .slide-media-header{
+    margin-bottom:4px;
+  }
+  /* Setas e pontinhos mantidos, só ajustando tamanho */
   .carousel-arrow{
     width:28px !important;
     height:28px !important;
   }
-
-  .carousel-prev{ left:6px; }
-  .carousel-next{ right:6px; }
-
-  /* DOTS MAIS PRÓXIMOS DO CONTEÚDO */
   .carousel-dots{
-    margin-top:12px !important;
+    margin-top:10px !important;
   }
 }
 
 @media (max-width: 480px){
   .assessoria-section{
-    padding:30px 12px !important;
+    padding:26px 10px !important;
   }
-
   .carousel-slide{
     padding:12px 8px !important;
-    gap:10px !important;
+    gap:8px !important;
   }
-
-  .slide-media{
-    max-width:190px !important;     /* AINDA MENOR PARA CELULARES MUITO PEQUENOS */
-  }
-
   .slide-content h3{
     font-size:14px !important;
   }
-
-  .slide-content p{
+  .slide-content p,
+  .slide-list li,
+  .slide-highlight{
     font-size:11px !important;
   }
-
-  .carousel-dots button{
-    width:6px !important;
-    height:6px !important;
+  .slide-media{
+    padding:8px 6px !important;
   }
 }
 
