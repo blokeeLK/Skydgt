@@ -5097,6 +5097,27 @@ body{
     font-size:13px;
   }
 }
+
+/* === REMOVER A 2ª CAIXA DE ANIMAÇÕES EM TODOS CARROSSEIS === */
+/* Esconde completamente a caixa de animações criada anteriormente */
+@media (max-width: 900px){
+  .slide-media{
+    display:none !important;
+    visibility:hidden !important;
+    height:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+  }
+}
+
+/* Reduz a altura total do slide agora que só existe 1 caixa */
+@media (max-width: 900px){
+  .carousel-slide{
+    flex-direction:column !important;
+    padding:14px 12px !important;
+    gap:10px !important;
+  }
+}
 </style>
 </head>
 
