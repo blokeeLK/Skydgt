@@ -3577,10 +3577,10 @@ body{
   50%{ transform:scale(1.5); opacity:0; }
 }
 
-/* ==== CARROSSEL ASSESSORIA – 2 CAIXAS NO MOBILE (TEXTO EM CIMA / ANIMAÇÃO EM BAIXO) ==== */
+/* === CARROSSEL ASSESSORIA – MOBILE: TEXTO EM CIMA (FUNDO BRANCO) + ANIMAÇÃO PEQUENA EM BAIXO === */
 @media (max-width: 900px){
   .assessoria-section{
-    padding:32px 14px !important;
+    padding:24px 10px !important;
   }
   .services-carousel-wrapper{
     width:100% !important;
@@ -3591,7 +3591,7 @@ body{
   .services-carousel-container{
     width:100% !important;
     max-width:100% !important;
-    border-radius:16px;
+    border-radius:14px;
     overflow:hidden !important;
   }
   .services-carousel-track{
@@ -3599,8 +3599,9 @@ body{
     width:100% !important;
     max-width:100% !important;
     box-sizing:border-box;
+    align-items:stretch !important;
   }
-  /* slide vira coluna: CAIXA DE CIMA (texto) + CAIXA DE BAIXO (animação) */
+  /* SLIDE = DUAS CAIXAS EMPILHADAS (TEXTO + ANIMAÇÃO) */
   .carousel-slide{
     min-width:100% !important;
     max-width:100% !important;
@@ -3608,79 +3609,129 @@ body{
     box-sizing:border-box;
     display:flex !important;
     flex-direction:column !important;
-    gap:10px !important;
-    padding:14px 10px !important;
+    gap:8px !important;
+    padding:10px 8px !important;
   }
-  /* CAIXA DE CIMA – TEXTO */
+  /* CAIXA DE CIMA – TEXTO (FUNDO BRANCO) */
   .slide-content{
     width:100% !important;
     max-width:100% !important;
-    padding:12px 10px;
-    border-radius:14px;
-    background:rgba(15,23,42,0.96);
-    border:1px solid rgba(148,163,184,0.55);
-    box-shadow:0 10px 26px rgba(15,23,42,0.9);
+    padding:10px 10px !important;
+    border-radius:12px !important;
+    background:#ffffff !important;
+    border:1px solid rgba(148,163,184,0.3) !important;
+    box-shadow:0 6px 16px rgba(15,23,42,0.18) !important;
+    color:#020617 !important;
+  }
+  .slide-tag{
+    background:rgba(15,23,42,0.05) !important;
+    border-color:rgba(148,163,184,0.4) !important;
+    color:#020617 !important;
+  }
+  .slide-tag i{
+    color:#38BDF8 !important;
   }
   .slide-content h3{
-    font-size:15px !important;
+    font-size:14px !important;
     line-height:1.25 !important;
-    margin-bottom:4px;
+    margin-bottom:4px !important;
+    color:#020617 !important;
   }
   .slide-content p{
-    font-size:12px !important;
+    font-size:11px !important;
+    margin-bottom:4px !important;
+    color:#111827 !important;
   }
   .slide-list li{
     font-size:11px !important;
+    color:#111827 !important;
   }
   .slide-highlight{
     font-size:11px !important;
+    color:#111827 !important;
   }
-  /* CAIXA DE BAIXO – ANIMAÇÃO / VISUAL */
+  /* CAIXA DE BAIXO – ANIMAÇÕES / VISUAL (BEM PEQUENO) */
   .slide-media{
     width:100% !important;
-    max-width:100% !important;
-    margin:0 auto;
-    border-radius:14px;
-    padding:10px 8px;
-    background:rgba(15,23,42,0.96);
-    border:1px solid rgba(148,163,184,0.55);
-    box-shadow:0 10px 26px rgba(15,23,42,0.9);
+    max-width:220px !important;   /* bem menor */
+    margin:0 auto !important;
+    border-radius:12px !important;
+    padding:8px 8px !important;
+    background:rgba(15,23,42,0.96) !important;
+    border:1px solid rgba(148,163,184,0.55) !important;
+    box-shadow:0 6px 18px rgba(15,23,42,0.8) !important;
   }
-  .media-grid{
-    gap:6px !important;
-  }
-  /* Deixa mais compacto verticalmente */
   .slide-media-header{
-    margin-bottom:4px;
+    margin-bottom:4px !important;
+    font-size:10px !important;
   }
-  /* Setas e pontinhos mantidos, só ajustando tamanho */
+  /* GRID DAS ANIMAÇÕES PEQUENO E SEM SOBREPOR */
+  .media-grid{
+    display:flex !important;
+    flex-wrap:wrap !important;
+    gap:4px !important;
+  }
+  .media-block{
+    flex:1 1 calc(50% - 4px) !important;  /* 2 por linha, pequenas */
+    min-width:0 !important;
+    padding:6px !important;
+    border-radius:10px !important;
+    font-size:9px !important;
+  }
+  .media-block-title{
+    font-size:9px !important;
+  }
+  .media-block-tag{
+    font-size:8px !important;
+    padding:3px 4px !important;
+  }
+  /* GARANTE QUE NADA FIQUE EM CIMA DO OUTRO */
+  .media-team,
+  .media-phones,
+  .media-dashboard,
+  .media-support-team{
+    transform:none !important;
+  }
+  /* SETAS E PONTOS AJUSTADOS */
   .carousel-arrow{
-    width:28px !important;
-    height:28px !important;
+    width:26px !important;
+    height:26px !important;
   }
   .carousel-dots{
-    margin-top:10px !important;
+    margin-top:8px !important;
   }
 }
 
 @media (max-width: 480px){
   .assessoria-section{
-    padding:26px 10px !important;
+    padding:22px 8px !important;
   }
   .carousel-slide{
-    padding:12px 8px !important;
-    gap:8px !important;
+    padding:8px 6px !important;
+    gap:6px !important;
+  }
+  .slide-content{
+    padding:8px 8px !important;
   }
   .slide-content h3{
-    font-size:14px !important;
+    font-size:13px !important;
   }
   .slide-content p,
   .slide-list li,
   .slide-highlight{
-    font-size:11px !important;
+    font-size:10px !important;
   }
   .slide-media{
-    padding:8px 6px !important;
+    max-width:190px !important;   /* ainda menor em tela bem pequena */
+    padding:6px 6px !important;
+  }
+  .media-block{
+    padding:5px !important;
+    font-size:8.5px !important;
+  }
+  .carousel-dot{
+    width:6px !important;
+    height:6px !important;
   }
 }
 
