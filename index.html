@@ -3649,18 +3649,6 @@ body{
   .assessoria-section .carousel-slide.active .slide-media *{
     animation-play-state:running !important;
   }
-  /* Resetar estados iniciais quando slide não está ativo */
-  .assessoria-section .carousel-slide:not(.active) .slide-media .team-member,
-  .assessoria-section .carousel-slide:not(.active) .slide-media .phone-mockup,
-  .assessoria-section .carousel-slide:not(.active) .slide-media .crm-container,
-  .assessoria-section .carousel-slide:not(.active) .slide-media .site-preview-phone,
-  .assessoria-section .carousel-slide:not(.active) .slide-media .site-preview-desktop,
-  .assessoria-section .carousel-slide:not(.active) .slide-media .ads-icon-main,
-  .assessoria-section .carousel-slide:not(.active) .slide-media .monitor-frame,
-  .assessoria-section .carousel-slide:not(.active) .slide-media .support-member{
-    opacity:0 !important;
-    transform:translateY(20px) scale(0.8) !important;
-  }
   /* ANIMAÇÕES MOBILE - TODAS REDIMENSIONADAS E CENTRALIZADAS */
   .assessoria-section .slide-media > *{
     max-width:100% !important;
@@ -3700,11 +3688,11 @@ body{
     transform-style:preserve-3d !important;
   }
   .assessoria-section .media-team img{
-    width:50px !important;
-    height:70px !important;
+    width:45px !important;
+    height:65px !important;
     object-fit:cover !important;
-    border-radius:12px !important;
-    box-shadow:0 8px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) !important;
+    border-radius:10px !important;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) !important;
     transition:all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     position:relative !important;
     z-index:2 !important;
@@ -3714,7 +3702,7 @@ body{
     animation-delay:0s !important;
   }
   .assessoria-section .media-team .team-photo-2 img{
-    height:85px !important;
+    height:75px !important;
     animation:autoHoverComplete2 6s ease-in-out infinite !important;
     animation-delay:1s !important;
     z-index:3 !important;
@@ -3902,22 +3890,22 @@ body{
   }
   .assessoria-section .phone-mockup{
     position:absolute !important;
-    width:70px !important;
+    width:65px !important;
     background:#fff !important;
-    border-radius:16px !important;
-    box-shadow:0 8px 20px rgba(0,0,0,0.2) !important;
+    border-radius:14px !important;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2) !important;
     overflow:hidden !important;
-    border:4px solid #1a1a1a !important;
+    border:3px solid #1a1a1a !important;
   }
   .assessoria-section .phone-mockup.phone-1{
-    left:10% !important;
-    top:20% !important;
+    left:5% !important;
+    top:15% !important;
     z-index:2 !important;
     transform:rotate(-5deg) !important;
   }
   .assessoria-section .phone-mockup.phone-2{
-    right:10% !important;
-    top:10% !important;
+    right:5% !important;
+    top:5% !important;
     z-index:1 !important;
     transform:rotate(5deg) !important;
   }
@@ -3983,16 +3971,33 @@ body{
     position:relative !important;
   }
   .assessoria-section .crm-container{
-    padding:8px !important;
+    padding:6px !important;
     background:#fff !important;
-    border-radius:12px !important;
-    box-shadow:0 8px 24px rgba(0,0,0,0.15) !important;
+    border-radius:10px !important;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1) !important;
     border:1px solid rgba(14,165,233,0.1) !important;
   }
   .assessoria-section .crm-header{
-    margin-bottom:8px !important;
-    padding-bottom:6px !important;
-    border-bottom:1.5px solid #f0f0f0 !important;
+    margin-bottom:6px !important;
+    padding-bottom:4px !important;
+    border-bottom:1px solid #f0f0f0 !important;
+  }
+  .assessoria-section .crm-logo{
+    font-size:8px !important;
+    gap:5px !important;
+  }
+  .assessoria-section .crm-logo-icon{
+    width:18px !important;
+    height:18px !important;
+    font-size:8px !important;
+  }
+  .assessoria-section .crm-status{
+    font-size:7px !important;
+    gap:4px !important;
+  }
+  .assessoria-section .crm-dot{
+    width:5px !important;
+    height:5px !important;
   }
   .assessoria-section .crm-dot{
     animation:pulseDot 2s ease-in-out infinite !important;
@@ -4109,23 +4114,23 @@ body{
     z-index:2 !important;
   }
   .assessoria-section .site-phone-frame{
-    width:60px !important;
-    height:120px !important;
-    box-shadow:0 8px 20px rgba(0,0,0,0.3) !important;
+    width:55px !important;
+    height:110px !important;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2) !important;
     animation:floatDevice 6s ease-in-out infinite !important;
   }
   @keyframes floatDevice{
     0%, 100%{ transform:translateY(0) !important; }
-    50%{ transform:translateY(-8px) !important; }
+    50%{ transform:translateY(-6px) !important; }
   }
   .assessoria-section .site-preview-desktop{
     position:relative !important;
     z-index:1 !important;
   }
   .assessoria-section .site-desktop-frame{
-    width:100px !important;
-    height:70px !important;
-    box-shadow:0 8px 20px rgba(0,0,0,0.2) !important;
+    width:90px !important;
+    height:65px !important;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2) !important;
     animation:floatDevice 6s ease-in-out infinite 3s !important;
   }
   .assessoria-section .site-preview-gradient,
@@ -4150,9 +4155,9 @@ body{
     top:50% !important;
     left:50% !important;
     transform:translate(-50%, -50%) !important;
-    width:120px !important;
-    height:120px !important;
-    border:2px dashed rgba(14,165,233,0.2) !important;
+    width:110px !important;
+    height:110px !important;
+    border:1.5px dashed rgba(14,165,233,0.2) !important;
     border-radius:50% !important;
     animation:rotateOrbit 30s linear infinite !important;
   }
@@ -4161,9 +4166,9 @@ body{
     to{ transform:translate(-50%, -50%) rotate(360deg) !important; }
   }
   .assessoria-section .ads-icon-main.facebook-main i{
-    width:45px !important;
-    height:45px !important;
-    font-size:20px !important;
+    width:40px !important;
+    height:40px !important;
+    font-size:18px !important;
     animation:pulseAds 3s ease-in-out infinite !important;
   }
   @keyframes pulseAds{
@@ -4174,9 +4179,16 @@ body{
     transform:scale(1.1) !important;
   }
   .assessoria-section .orbit-icon{
-    width:30px !important;
-    height:30px !important;
-    font-size:14px !important;
+    width:28px !important;
+    height:28px !important;
+    font-size:13px !important;
+  }
+  .assessoria-section .ads-icon-main span{
+    font-size:8px !important;
+    padding:3px 8px !important;
+  }
+  .assessoria-section .ads-icon-orbit span{
+    font-size:7px !important;
   }
   
   /* SLIDE 6 - DASHBOARDS: Animação do desktop adaptada */
@@ -4190,20 +4202,36 @@ body{
     transform:none !important;
   }
   .assessoria-section .monitor-frame{
-    width:140px !important;
-    height:90px !important;
-    box-shadow:0 8px 20px rgba(0,0,0,0.2) !important;
+    width:130px !important;
+    height:85px !important;
+    box-shadow:0 6px 15px rgba(0,0,0,0.15) !important;
   }
   .assessoria-section .dash-header-new{
-    padding:4px 6px !important;
-    margin-bottom:4px !important;
+    padding:3px 5px !important;
+    margin-bottom:3px !important;
+  }
+  .assessoria-section .dash-logo-new{
+    font-size:6px !important;
+    gap:3px !important;
+  }
+  .assessoria-section .logo-dot{
+    width:4px !important;
+    height:4px !important;
+  }
+  .assessoria-section .dash-status{
+    font-size:5px !important;
+    gap:3px !important;
+  }
+  .assessoria-section .status-dot{
+    width:4px !important;
+    height:4px !important;
   }
   .assessoria-section .dash-cards-new{
-    gap:3px !important;
-    margin-bottom:4px !important;
+    gap:2px !important;
+    margin-bottom:3px !important;
   }
   .assessoria-section .dash-card-new{
-    padding:4px 3px !important;
+    padding:3px 2px !important;
     opacity:0 !important;
     transform:translateY(5px) !important;
     animation:cardAppear 0.5s ease forwards !important;
@@ -4373,12 +4401,12 @@ body{
     90%, 95%{ opacity:0.8 !important; transform:translateY(-3px) scale(0.98) !important; }
   }
   .assessoria-section .support-image-wrapper{
-    width:50px !important;
-    height:70px !important;
-    border-radius:12px !important;
+    width:45px !important;
+    height:65px !important;
+    border-radius:10px !important;
     overflow:hidden !important;
-    box-shadow:0 8px 20px rgba(0,0,0,0.2) !important;
-    margin-bottom:8px !important;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2) !important;
+    margin-bottom:6px !important;
   }
   .assessoria-section .support-image-wrapper img{
     width:100% !important;
@@ -4388,11 +4416,11 @@ body{
   }
   .assessoria-section .support-phone-icon,
   .assessoria-section .support-headphone-icon{
-    width:18px !important;
-    height:18px !important;
-    font-size:8px !important;
-    bottom:8px !important;
-    right:8px !important;
+    width:16px !important;
+    height:16px !important;
+    font-size:7px !important;
+    bottom:6px !important;
+    right:6px !important;
     animation:phonePulse 2s ease-in-out infinite !important;
   }
   @keyframes phonePulse{
@@ -4400,11 +4428,11 @@ body{
     50%{ transform:scale(1.1) !important; }
   }
   .assessoria-section .support-pulse-ring{
-    width:18px !important;
-    height:18px !important;
-    bottom:8px !important;
-    right:8px !important;
-    border-width:1.5px !important;
+    width:16px !important;
+    height:16px !important;
+    bottom:6px !important;
+    right:6px !important;
+    border-width:1px !important;
     animation:ringPulse 2s ease-in-out infinite !important;
   }
   @keyframes ringPulse{
@@ -4418,14 +4446,14 @@ body{
     }
   }
   .assessoria-section .support-badge{
-    font-size:8px !important;
-    padding:4px 8px !important;
+    font-size:7px !important;
+    padding:3px 6px !important;
     text-align:center !important;
     font-weight:700 !important;
     color:#1a1a1a !important;
     background:#fff !important;
-    border-radius:12px !important;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1) !important;
+    border-radius:10px !important;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1) !important;
   }
   
   /* GRID DE BLOCOS — 100% SEM SOBREPOSIÇÃO */
@@ -4467,71 +4495,103 @@ body{
   
   /* Ajustes para telas pequenas mantendo animações */
   .assessoria-section .media-team img{
-    width:45px !important;
-    height:65px !important;
-  }
-  
-  .assessoria-section .phone-mockup{
-    width:55px !important;
-  }
-  
-  .assessoria-section .crm-container{
-    padding:6px !important;
-  }
-  .assessoria-section .crm-stat-value{
-    font-size:10px !important;
-  }
-  .assessoria-section .crm-stat-icon{
-    width:18px !important;
-    height:18px !important;
-    font-size:8px !important;
-  }
-  
-  .assessoria-section .site-phone-frame{
-    width:50px !important;
-    height:100px !important;
-  }
-  .assessoria-section .site-desktop-frame{
-    width:85px !important;
+    width:40px !important;
     height:60px !important;
   }
-  
-  .assessoria-section .ads-icon-main.facebook-main i{
-    width:40px !important;
-    height:40px !important;
-    font-size:18px !important;
+  .assessoria-section .media-team .team-photo-2 img{
+    height:70px !important;
   }
-  .assessoria-section .orbit-icon{
-    width:28px !important;
-    height:28px !important;
-    font-size:12px !important;
-  }
-  .assessoria-section .media-ads-icons::before{
+  .assessoria-section .media-team::before{
     width:100px !important;
     height:100px !important;
   }
   
+  .assessoria-section .phone-mockup{
+    width:50px !important;
+  }
+  .assessoria-section .phone-mockup.phone-1{
+    left:2% !important;
+    top:12% !important;
+  }
+  .assessoria-section .phone-mockup.phone-2{
+    right:2% !important;
+    top:2% !important;
+  }
+  
+  .assessoria-section .crm-container{
+    padding:5px !important;
+  }
+  .assessoria-section .crm-stat-value{
+    font-size:9px !important;
+  }
+  .assessoria-section .crm-stat-icon{
+    width:16px !important;
+    height:16px !important;
+    font-size:7px !important;
+  }
+  .assessoria-section .crm-stat-label{
+    font-size:5px !important;
+  }
+  .assessoria-section .funnel-bar{
+    height:10px !important;
+  }
+  
+  .assessoria-section .site-phone-frame{
+    width:48px !important;
+    height:95px !important;
+  }
+  .assessoria-section .site-desktop-frame{
+    width:80px !important;
+    height:58px !important;
+  }
+  
+  .assessoria-section .ads-icon-main.facebook-main i{
+    width:35px !important;
+    height:35px !important;
+    font-size:16px !important;
+  }
+  .assessoria-section .orbit-icon{
+    width:25px !important;
+    height:25px !important;
+    font-size:11px !important;
+  }
+  .assessoria-section .media-ads-icons::before{
+    width:95px !important;
+    height:95px !important;
+  }
+  
   .assessoria-section .monitor-frame{
-    width:120px !important;
+    width:115px !important;
     height:75px !important;
   }
   .assessoria-section .card-number{
     font-size:6px !important;
   }
+  .assessoria-section .card-label{
+    font-size:3px !important;
+  }
   
   .assessoria-section .support-image-wrapper{
-    width:45px !important;
-    height:65px !important;
+    width:40px !important;
+    height:60px !important;
   }
   .assessoria-section .support-phone-icon,
   .assessoria-section .support-headphone-icon{
-    width:16px !important;
-    height:16px !important;
-    font-size:7px !important;
+    width:14px !important;
+    height:14px !important;
+    font-size:6px !important;
+    bottom:4px !important;
+    right:4px !important;
   }
   .assessoria-section .support-pulse-ring{
-    width:16px !important;
-    height:16px !important;
+    width:14px !important;
+    height:14px !important;
+    bottom:4px !important;
+    right:4px !important;
+  }
+  .assessoria-section .support-badge{
+    font-size:6px !important;
+    padding:2px 5px !important;
   }
   
   .assessoria-section .media-grid{
