@@ -3645,6 +3645,22 @@ body{
   .assessoria-section .carousel-slide:not(.active) .slide-media *{
     animation:none !important;
   }
+  /* Garantir que animações funcionem quando slide está ativo */
+  .assessoria-section .carousel-slide.active .slide-media *{
+    animation-play-state:running !important;
+  }
+  /* Resetar estados iniciais quando slide não está ativo */
+  .assessoria-section .carousel-slide:not(.active) .slide-media .team-member,
+  .assessoria-section .carousel-slide:not(.active) .slide-media .phone-mockup,
+  .assessoria-section .carousel-slide:not(.active) .slide-media .crm-container,
+  .assessoria-section .carousel-slide:not(.active) .slide-media .site-preview-phone,
+  .assessoria-section .carousel-slide:not(.active) .slide-media .site-preview-desktop,
+  .assessoria-section .carousel-slide:not(.active) .slide-media .ads-icon-main,
+  .assessoria-section .carousel-slide:not(.active) .slide-media .monitor-frame,
+  .assessoria-section .carousel-slide:not(.active) .slide-media .support-member{
+    opacity:0 !important;
+    transform:translateY(20px) scale(0.8) !important;
+  }
   /* ANIMAÇÕES MOBILE - TODAS REDIMENSIONADAS E CENTRALIZADAS */
   .assessoria-section .slide-media > *{
     max-width:100% !important;
@@ -5626,6 +5642,7 @@ body{
 
 /* === REMOVER A 2ª CAIXA DE ANIMAÇÕES EM TODOS CARROSSEIS === */
 /* Esconde completamente a caixa de animações criada anteriormente */
+/* EXCETO na seção assessoria onde queremos mostrar as animações mobile */
 @media (max-width: 900px){
   .slide-media{
     display:none !important;
@@ -5633,6 +5650,14 @@ body{
     height:0 !important;
     padding:0 !important;
     margin:0 !important;
+  }
+  /* Mostra as animações na seção assessoria */
+  .assessoria-section .slide-media{
+    display:flex !important;
+    visibility:visible !important;
+    height:180px !important;
+    padding:6px !important;
+    margin:0 auto !important;
   }
 }
 
@@ -6972,6 +6997,18 @@ _Formulário preenchido através do site_`;
         // Small delay to trigger re-animation
         setTimeout(() => {
           slide.classList.add('active');
+          
+          // Reiniciar animações mobile forçando reflow
+          const slideMedia = slide.querySelector('.slide-media');
+          if(slideMedia && window.innerWidth <= 900){
+            const mediaElements = slideMedia.querySelectorAll('*');
+            mediaElements.forEach(el => {
+              // Força reflow para reiniciar animações
+              el.style.animation = 'none';
+              void el.offsetHeight; // Trigger reflow
+              el.style.animation = '';
+            });
+          }
         }, 50);
       }
     });
