@@ -5599,7 +5599,7 @@ body{
     </div>
     
     <div class="form-right">
-      <form class="contact-form" id="contactForm">
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/alexjunio160@gmail.com" method="POST">
         <div class="form-group">
           <input type="text" name="nome" placeholder="Qual é o seu nome e sobrenome?" required>
         </div>
@@ -6607,8 +6607,14 @@ document.querySelector('.footer-right a').addEventListener('click', (e) => {
   
   if(!contactForm || !submitBtn) return;
   
-  // Função para enviar ao WhatsApp
-  function enviarParaWhatsApp(e){
+  // Adicionar campos hidden para FormSubmit
+  contactForm.insertAdjacentHTML('beforeend', '<input type="hidden" name="_subject" value="Novo Contato - SKY DGT">');
+  contactForm.insertAdjacentHTML('beforeend', '<input type="hidden" name="_template" value="table">');
+  contactForm.insertAdjacentHTML('beforeend', '<input type="hidden" name="_captcha" value="false">');
+  contactForm.insertAdjacentHTML('beforeend', '<input type="hidden" name="_autoresponse" value="Obrigado pelo seu contato! Entraremos em contato em breve.">');
+  
+  // Função para processar envio do formulário
+  function processarEnvio(e){
     e.preventDefault();
     
     // Coletar todos os dados do formulário
@@ -6663,46 +6669,62 @@ document.querySelector('.footer-right a').addEventListener('click', (e) => {
       ? telefoneLimpo.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3')
       : telefoneLimpo.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
     
-    // Montar mensagem formatada para WhatsApp
-    const mensagem = `*NOVO CONTATO - SKY DGT*
-
-👤 *Nome:* ${nome}
-📧 *E-mail:* ${email}
-🏢 *Empresa:* ${empresa}
-📱 *Telefone:* +55 ${telefoneFormatado}
-💰 *Faturamento Mensal:* ${faturamentoTexto}
-📊 *Segmento:* ${segmentoTexto}
-
-_Formulário preenchido através do site_`;
+    // Adicionar campos ocultos com os textos completos dos selects
+    let faturamentoHidden = contactForm.querySelector('[name="faturamento_texto"]');
+    if(!faturamentoHidden){
+      faturamentoHidden = document.createElement('input');
+      faturamentoHidden.type = 'hidden';
+      faturamentoHidden.name = 'Faturamento Mensal';
+      contactForm.appendChild(faturamentoHidden);
+    }
+    faturamentoHidden.value = faturamentoTexto;
     
-    // Codificar mensagem para URL
-    const mensagemEncoded = encodeURIComponent(mensagem);
+    let segmentoHidden = contactForm.querySelector('[name="segmento_texto"]');
+    if(!segmentoHidden){
+      segmentoHidden = document.createElement('input');
+      segmentoHidden.type = 'hidden';
+      segmentoHidden.name = 'Segmento';
+      contactForm.appendChild(segmentoHidden);
+    }
+    segmentoHidden.value = segmentoTexto;
     
-    // Número do WhatsApp (sem caracteres especiais)
-    const whatsappNumber = '5537991169527';
+    // Adicionar telefone formatado como campo adicional
+    let telefoneFormatadoField = contactForm.querySelector('[name="telefone_formatado"]');
+    if(!telefoneFormatadoField){
+      telefoneFormatadoField = document.createElement('input');
+      telefoneFormatadoField.type = 'hidden';
+      telefoneFormatadoField.name = 'Telefone Formatado';
+      contactForm.appendChild(telefoneFormatadoField);
+    }
+    telefoneFormatadoField.value = '+55 ' + telefoneFormatado;
     
-    // Criar URL do WhatsApp
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${mensagemEncoded}`;
+    // Feedback visual
+    submitBtn.innerHTML = '<span>Enviando...</span><i class="fas fa-spinner fa-spin"></i>';
+    submitBtn.disabled = true;
     
-    // Abrir WhatsApp em nova aba
-    window.open(whatsappURL, '_blank');
+    // Enviar formulário
+    contactForm.submit();
     
-    // Feedback visual (opcional)
-    submitBtn.innerHTML = '<span>✓ Enviado!</span><i class="fas fa-check"></i>';
-    submitBtn.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
-    
-    // Resetar botão após 3 segundos
+    // Feedback visual após envio
     setTimeout(() => {
-      submitBtn.innerHTML = '<span>Receber mais informações</span><i class="fas fa-arrow-right"></i>';
-      submitBtn.style.background = '';
-    }, 3000);
+      submitBtn.innerHTML = '<span>✓ Enviado!</span><i class="fas fa-check"></i>';
+      submitBtn.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
+      
+      // Resetar botão após 5 segundos
+      setTimeout(() => {
+        submitBtn.innerHTML = '<span>Receber mais informações</span><i class="fas fa-arrow-right"></i>';
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+        contactForm.reset();
+      }, 5000);
+    }, 1000);
     
     return false;
   }
   
   // Adicionar evento de submit
-  contactForm.addEventListener('submit', enviarParaWhatsApp);
-  submitBtn.addEventListener('click', enviarParaWhatsApp);
+  contactForm.addEventListener('submit', processarEnvio);
+  submitBtn.addEventListener('click', processarEnvio);
   
   // Input animations
   const inputs = contactForm.querySelectorAll('input, select');
