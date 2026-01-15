@@ -5599,7 +5599,7 @@ body{
     </div>
     
     <div class="form-right">
-      <form class="contact-form" id="contactForm" action="https://formsubmit.co/alexjunio160@gmail.com" method="POST">
+      <form class="contact-form" id="contactForm">
         <div class="form-group">
           <input type="text" name="nome" placeholder="Qual é o seu nome e sobrenome?" required>
         </div>
@@ -6607,11 +6607,7 @@ document.querySelector('.footer-right a').addEventListener('click', (e) => {
   
   if(!contactForm || !submitBtn) return;
   
-  // Adicionar campos hidden para FormSubmit
-  contactForm.insertAdjacentHTML('beforeend', '<input type="hidden" name="_subject" value="Novo Contato - SKY DGT">');
-  contactForm.insertAdjacentHTML('beforeend', '<input type="hidden" name="_template" value="table">');
-  contactForm.insertAdjacentHTML('beforeend', '<input type="hidden" name="_captcha" value="false">');
-  contactForm.insertAdjacentHTML('beforeend', '<input type="hidden" name="_autoresponse" value="Obrigado pelo seu contato! Entraremos em contato em breve.">');
+  // Envio direto via FormSubmit usando AJAX (sem verificação necessária)
   
   // Função para processar envio do formulário
   function processarEnvio(e){
@@ -6688,36 +6684,86 @@ document.querySelector('.footer-right a').addEventListener('click', (e) => {
     }
     segmentoHidden.value = segmentoTexto;
     
-    // Adicionar telefone formatado como campo adicional
-    let telefoneFormatadoField = contactForm.querySelector('[name="telefone_formatado"]');
-    if(!telefoneFormatadoField){
-      telefoneFormatadoField = document.createElement('input');
-      telefoneFormatadoField.type = 'hidden';
-      telefoneFormatadoField.name = 'Telefone Formatado';
-      contactForm.appendChild(telefoneFormatadoField);
-    }
-    telefoneFormatadoField.value = '+55 ' + telefoneFormatado;
-    
+    // Formatar mensagem completa para email
+    const mensagemEmail = `NOVO CONTATO - SKY DGT
+
+Nome: ${nome}
+E-mail: ${email}
+Empresa: ${empresa}
+Telefone: +55 ${telefoneFormatado}
+Faturamento Mensal: ${faturamentoTexto}
+Segmento: ${segmentoTexto}
+
+Formulário preenchido através do site`;
+
     // Feedback visual
     submitBtn.innerHTML = '<span>Enviando...</span><i class="fas fa-spinner fa-spin"></i>';
     submitBtn.disabled = true;
     
-    // Enviar formulário
-    contactForm.submit();
+    // Preparar dados do formulário
+    const formData = new FormData();
+    formData.append('email', 'alexjunio160@gmail.com');
+    formData.append('_subject', 'Novo Contato - SKY DGT');
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
+    formData.append('_autoresponse', 'Obrigado pelo seu contato! Entraremos em contato em breve.');
     
-    // Feedback visual após envio
-    setTimeout(() => {
-      submitBtn.innerHTML = '<span>✓ Enviado!</span><i class="fas fa-check"></i>';
+    // Adicionar todos os campos do formulário
+    formData.append('Nome', nome);
+    formData.append('E-mail', email);
+    formData.append('Empresa', empresa);
+    formData.append('Telefone', '+55 ' + telefoneFormatado);
+    formData.append('Faturamento Mensal', faturamentoTexto);
+    formData.append('Segmento', segmentoTexto);
+    formData.append('Mensagem Completa', mensagemEmail);
+    
+    // Enviar via FormSubmit usando fetch (envio direto via AJAX)
+    fetch('https://formsubmit.co/ajax/alexjunio160@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json'
+      },
+      body: formData
+    })
+    .then(response => {
+      if(response.ok) {
+        return response.json();
+      }
+      throw new Error('Erro ao enviar formulário');
+    })
+    .then(data => {
+      // Sucesso - email enviado
+      submitBtn.innerHTML = '<span>✓ Enviado com sucesso!</span><i class="fas fa-check"></i>';
       submitBtn.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
+      
+      // Resetar formulário
+      contactForm.reset();
+      
+      // Remover campos ocultos temporários
+      const tempFields = contactForm.querySelectorAll('[name="Nome"], [name="E-mail"], [name="Empresa"], [name="Telefone"], [name="Faturamento Mensal"], [name="Segmento"], [name="Mensagem Completa"]');
+      tempFields.forEach(field => field.remove());
       
       // Resetar botão após 5 segundos
       setTimeout(() => {
         submitBtn.innerHTML = '<span>Receber mais informações</span><i class="fas fa-arrow-right"></i>';
         submitBtn.style.background = '';
         submitBtn.disabled = false;
-        contactForm.reset();
       }, 5000);
-    }, 1000);
+    })
+    .catch(error => {
+      console.error('Erro ao enviar:', error);
+      
+      // Em caso de erro, mostrar mensagem mas manter dados
+      submitBtn.innerHTML = '<span>⚠️ Erro ao enviar</span><i class="fas fa-exclamation-triangle"></i>';
+      submitBtn.style.background = 'linear-gradient(135deg, #EF4444 0%, #DC2626 100%)';
+      
+      // Tentar novamente após 3 segundos
+      setTimeout(() => {
+        submitBtn.innerHTML = '<span>Receber mais informações</span><i class="fas fa-arrow-right"></i>';
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+      }, 3000);
+    });
     
     return false;
   }
